@@ -9,7 +9,7 @@ export default async function RenovasiPage() {
     const portfolios = await client.fetch(RENOVASI_QUERY);
 
     return (
-        <div className="bg-white min-h-screen">
+        <div className="min-h-screen">
             {/* Hero Section */}
             <section className="relative bg-blue-900 text-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-blue-800 opacity-90 z-0"></div>

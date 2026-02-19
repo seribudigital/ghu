@@ -72,7 +72,7 @@ export default async function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-50">
+      <section id="services" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">Layanan Kami</h2>
@@ -137,7 +137,7 @@ export default async function Home() {
       </section>
 
       {/* Recent Properties Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-end mb-12">
             <div>
