@@ -26,10 +26,9 @@ const Footer = () => {
                     <div>
                         <h3 className="text-xl font-bold mb-4">Hubungi Kami</h3>
                         <div className="space-y-2 text-gray-400">
-                            <p>Jl. Raya Utama No. 123, Kota Harapan</p>
+                            <p>Jl. DLLAJ Pakupatan, Kasemen, Kec. Serang, Kota Serang, Banten</p>
                             <p>Email: info@griyahariantoutama.com</p>
-                            <p>Telepon: (021) 555-0123</p>
-                            <p>WhatsApp: 0812-3456-7890</p>
+                            <p>Telepon/WA: 0881-5627-338</p>
                         </div>
                     </div>
                 </div>
