@@ -3,6 +3,7 @@ import { client } from '@/sanity/lib/client';
 import { RECENT_PROPERTIES_QUERY } from '@/sanity/lib/queries';
 import PropertyCard from '@/components/PropertyCard';
 import Testimonials from '@/components/Testimonials';
+import Stats from '@/components/Stats';
 
 export const revalidate = 60;
 
@@ -43,6 +44,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* Stats Section */}
+      <Stats />
 
       {/* About Us / Why Us Section */}
       <section className="py-20 bg-white">
