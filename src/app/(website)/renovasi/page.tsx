@@ -13,7 +13,7 @@ export default async function RenovasiPage() {
             {/* Hero Section */}
             <section className="relative bg-blue-900 text-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-blue-800 opacity-90 z-0"></div>
-                <div className="absolute inset-0 bg-grid-pattern opacity-20 z-0"></div>
+                <div className="absolute inset-0 bg-grid-pattern opacity-50 z-0"></div>
                 <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10 z-0 hidden"></div> {/* Placeholder removed/hidden */}
 
                 <div className="relative z-10 max-w-5xl mx-auto text-center">
