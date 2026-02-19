@@ -27,7 +27,7 @@ const Footer = () => {
                         <h3 className="text-xl font-bold mb-4">Hubungi Kami</h3>
                         <div className="space-y-2 text-gray-400">
                             <p>Jl. DLLAJ Pakupatan, Kasemen, Kec. Serang, Kota Serang, Banten</p>
-                            <p>Email: info@griyahariantoutama.com</p>
+                            {/* <p>Email: info@griyahariantoutama.com</p> */}
                             <p>Telepon/WA: 0881-5627-338</p>
                         </div>
                     </div>

@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 
 export default function WebsiteLayout({
     children,
@@ -13,6 +14,7 @@ export default function WebsiteLayout({
                 {children}
             </main>
             <Footer />
+            <FloatingWhatsApp />
         </div>
     );
 }

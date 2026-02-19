@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { client } from '@/sanity/lib/client';
 import { RECENT_PROPERTIES_QUERY } from '@/sanity/lib/queries';
 import PropertyCard from '@/components/PropertyCard';
+import Testimonials from '@/components/Testimonials';
 
 export const revalidate = 60;
 
@@ -166,6 +167,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <Testimonials />
 
       {/* CONTACT CTA Section */}
       <section className="py-24 bg-gradient-to-br from-blue-900 to-blue-800 text-white text-center px-4 relative overflow-hidden">
