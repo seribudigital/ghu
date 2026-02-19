@@ -16,6 +16,7 @@ export default async function Home() {
       <section className="relative bg-blue-900 text-white py-24 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-blue-700 opacity-90"></div>
+          <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
           {/* Placeholder for Hero Image if needed in future */}
         </div>
         <div className="relative max-w-7xl mx-auto text-center">
