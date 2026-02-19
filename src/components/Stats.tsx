@@ -33,7 +33,7 @@ const Stats = () => {
     ];
 
     return (
-        <section className="bg-blue-50 py-10 border-b border-blue-100">
+        <section className="py-10 border-b border-blue-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-blue-200">
                     {stats.map((stat) => (

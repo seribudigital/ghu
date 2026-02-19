@@ -50,7 +50,7 @@ export default async function Home() {
       <Stats />
 
       {/* About Us / Why Us Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Tentang Kami</h2>
           <div className="bg-blue-50 p-8 rounded-2xl shadow-sm border border-blue-100 mb-10">
@@ -203,7 +203,7 @@ export default async function Home() {
         </div>
       </section>
       {/* Location Map Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Lokasi Kantor Kami</h2>
           <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200">

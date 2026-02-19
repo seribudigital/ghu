@@ -9,6 +9,7 @@ export default function WebsiteLayout({
 }>) {
     return (
         <div className="flex flex-col min-h-screen">
+            <div className="fixed inset-0 z-[-10] pointer-events-none bg-[url('/pattern.svg')] bg-left bg-repeat-y opacity-50" />
             <Navbar />
             <main className="flex-grow pt-16">
                 {children}

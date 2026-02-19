@@ -9,7 +9,7 @@ export default async function TanahPage() {
 
     return (
         <div className="min-h-screen py-12 relative">
-            <div className="absolute inset-0 bg-topo-pattern opacity-60 pointer-events-none"></div>
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-12">
                     <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">

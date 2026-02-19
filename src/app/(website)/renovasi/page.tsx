@@ -36,7 +36,7 @@ export default async function RenovasiPage() {
             </section>
 
             {/* Services & Benefits Section */}
-            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+            <section className="py-16 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
                     {/* Layanan Kami */}
                     <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
@@ -87,7 +87,7 @@ export default async function RenovasiPage() {
             </section>
 
             {/* Price Simulation Section */}
-            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+            <section className="py-16 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-4xl mx-auto">
                     <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-3xl shadow-2xl p-8 md:p-12 text-white relative overflow-hidden">
                         <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white opacity-10"></div>
@@ -118,7 +118,7 @@ export default async function RenovasiPage() {
             </section>
 
             {/* Portfolio Gallery Section */}
-            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+            <section className="py-16 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold text-gray-900">Portofolio & Hasil Kerja</h2>
