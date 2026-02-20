@@ -8,4 +8,5 @@ export const client = createClient({
     apiVersion,
     useCdn,
     perspective: 'published',
+    token: process.env.SANITY_API_TOKEN,
 })

@@ -131,7 +131,7 @@ export default async function RenovasiPage() {
                             {portfolios.map((item: any) => {
                                 const displayImage = item.mainImage || (item.gallery && item.gallery[0]);
                                 return (
-                                    <Link href={`/renovasi/${item.slug.current}`} key={item._id} className="block group relative break-inside-avoid overflow-hidden rounded-xl shadow-lg bg-white hover:scale-[1.02] transition-transform duration-300">
+                                    <Link href={`/properti/${item.slug.current}`} key={item._id} className="block group relative break-inside-avoid overflow-hidden rounded-xl shadow-lg bg-white hover:scale-[1.02] transition-transform duration-300">
                                         <div className="relative h-64 w-full overflow-hidden">
                                             {displayImage ? (
                                                 <Image
