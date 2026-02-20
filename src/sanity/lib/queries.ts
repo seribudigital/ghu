@@ -1,6 +1,6 @@
 import { groq } from 'next-sanity'
 
-export const PROPERTIES_QUERY = groq`*[_type == "property"] | order(_createdAt desc) {
+export const PROPERTIES_QUERY = groq`*[_type == "property" && category != "Renovasi"] | order(_createdAt desc) {
   _id,
   title,
   slug,
@@ -9,10 +9,11 @@ export const PROPERTIES_QUERY = groq`*[_type == "property"] | order(_createdAt d
   price,
   luas,
   mainImage,
+  gallery,
   description
 }`
 
-export const RECENT_PROPERTIES_QUERY = groq`*[_type == "property"] | order(_createdAt desc)[0...3] {
+export const RECENT_PROPERTIES_QUERY = groq`*[_type == "property" && category != "Renovasi"] | order(_createdAt desc)[0...3] {
   _id,
   title,
   slug,
@@ -20,7 +21,8 @@ export const RECENT_PROPERTIES_QUERY = groq`*[_type == "property"] | order(_crea
   status,
   price,
   luas,
-  mainImage
+  mainImage,
+  gallery
 }`
 
 export const PROPERTY_BY_SLUG_QUERY = groq`*[_type == "property" && slug.current == $slug][0] {
@@ -32,6 +34,7 @@ export const PROPERTY_BY_SLUG_QUERY = groq`*[_type == "property" && slug.current
   price,
   luas,
   mainImage,
+  gallery,
   description
 }`
 
@@ -65,5 +68,7 @@ export const RENOVASI_QUERY = groq`*[_type == "property" && category == "Renovas
   status,
   price,
   luas,
-  mainImage
+  mainImage,
+  gallery,
+  description
 }`

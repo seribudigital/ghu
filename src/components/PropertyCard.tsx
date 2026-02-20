@@ -12,11 +12,14 @@ interface PropertyProps {
         price: number;
         luas: string;
         mainImage: any;
+        gallery?: any;
     };
 }
 
 const PropertyCard = ({ property }: PropertyProps) => {
-    const { title, slug, category, status, price, luas, mainImage } = property;
+    const { title, slug, category, status, price, luas, mainImage, gallery } = property;
+
+    const displayImage = mainImage || (gallery && gallery[0]);
 
     const formatRupiah = (price: number) => {
         return new Intl.NumberFormat('id-ID', {
@@ -42,9 +45,9 @@ const PropertyCard = ({ property }: PropertyProps) => {
     return (
         <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full border border-gray-100">
             <div className="relative h-64 w-full bg-gray-200">
-                {mainImage ? (
+                {displayImage ? (
                     <Image
-                        src={urlForImage(mainImage).url()}
+                        src={urlForImage(displayImage).url()}
                         alt={title}
                         fill
                         className="object-cover"

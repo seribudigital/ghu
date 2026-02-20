@@ -33,20 +33,22 @@ const Stats = () => {
     ];
 
     return (
-        <section className="py-10 border-b border-blue-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-blue-200">
-                    {stats.map((stat) => (
-                        <div key={stat.id} className="pt-4 md:pt-0 px-4">
-                            <div className="flex flex-col items-center">
-                                <div className="mb-2 p-3 bg-white rounded-full shadow-sm">
-                                    {stat.icon}
+        <section className="relative z-10 -mt-16 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+                <div className="bg-white rounded-2xl shadow-xl py-8 px-4 sm:px-8 border border-gray-100">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-gray-100">
+                        {stats.map((stat) => (
+                            <div key={stat.id} className="pt-6 md:pt-0 px-4">
+                                <div className="flex flex-col items-center">
+                                    <div className="mb-3 p-3 bg-ghu-bg rounded-full shadow-inner">
+                                        {stat.icon}
+                                    </div>
+                                    <p className="text-4xl font-extrabold text-ghu-primary mb-1">{stat.value}</p>
+                                    <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">{stat.label}</p>
                                 </div>
-                                <p className="text-4xl font-extrabold text-blue-900 mb-1">{stat.value}</p>
-                                <p className="text-base font-medium text-gray-600 uppercase tracking-wide">{stat.label}</p>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

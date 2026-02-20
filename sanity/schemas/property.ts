@@ -46,17 +46,20 @@ export default defineType({
                 ],
             },
             initialValue: 'Tersedia',
+            hidden: ({ document }) => document?.category === 'Renovasi',
         }),
         defineField({
             name: 'price',
             title: 'Harga',
             type: 'number',
+            hidden: ({ document }) => document?.category === 'Renovasi',
         }),
         defineField({
             name: 'luas',
             title: 'Luas Tanah/Bangunan',
             type: 'string',
             description: 'Contoh: 72m2 / 45m2',
+            hidden: ({ document }) => document?.category === 'Renovasi',
         }),
         defineField({
             name: 'mainImage',
@@ -85,6 +88,34 @@ export default defineType({
                     lists: [],
                 },
             ],
+        }),
+        defineField({
+            name: 'gallery',
+            title: 'Galeri Foto',
+            type: 'array',
+            of: [
+                {
+                    type: 'image',
+                    options: {
+                        hotspot: true,
+                    },
+                    fields: [
+                        {
+                            name: 'caption',
+                            type: 'string',
+                            title: 'Caption',
+                        },
+                        {
+                            name: 'alt',
+                            type: 'string',
+                            title: 'Alternative Text',
+                        }
+                    ]
+                }
+            ],
+            options: {
+                layout: 'grid',
+            },
         }),
     ],
 })

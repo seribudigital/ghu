@@ -8,15 +8,15 @@ import Link from 'next/link';
 
 export const revalidate = 60;
 
-interface PropertyPageProps {
+interface RenovasiPageProps {
     params: Promise<{ slug: string }>;
 }
 
-export default async function PropertyDetailPage({ params }: PropertyPageProps) {
+export default async function RenovasiDetailPage({ params }: RenovasiPageProps) {
     const { slug } = await params;
     const property = await client.fetch(PROPERTY_BY_SLUG_QUERY, { slug });
 
-    if (!property) {
+    if (!property || property.category !== 'Renovasi') {
         notFound();
     }
 
@@ -65,11 +65,11 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
             {/* Back Button Overlay */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 -mt-16 mb-6">
                 <Link
-                    href={property.category === 'Tanah Kapling' ? '/tanah' : '/properti'}
+                    href="/renovasi"
                     className="inline-flex items-center text-sm font-bold bg-white/95 backdrop-blur-md text-ghu-primary px-5 py-2.5 rounded-full shadow-lg hover:bg-ghu-primary hover:text-white transition-all border border-gray-100"
                 >
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                    Kembali ke {property.category === 'Tanah Kapling' ? 'Katalog Tanah' : 'Daftar Properti'}
+                    Kembali ke Portofolio Renovasi
                 </Link>
             </div>
 
@@ -78,21 +78,13 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
                         <div>
                             <div className="flex items-center gap-3 mb-2">
-                                <span className={`px-3 py-1 rounded-full text-sm font-bold uppercase tracking-wide ${getStatusColor(property.status)}`}>
-                                    {property.status}
-                                </span>
                                 <span className="text-blue-600 font-semibold bg-blue-50 px-3 py-1 rounded-full text-sm">
-                                    {property.category}
+                                    Portofolio Renovasi
                                 </span>
                             </div>
                             <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900">
                                 {property.title}
                             </h1>
-                        </div>
-                        <div className="mt-4 md:mt-0">
-                            <p className="text-3xl font-bold text-gray-900">
-                                {property.price ? formatRupiah(property.price) : 'Hubungi Kami'}
-                            </p>
                         </div>
                     </div>
 
@@ -110,29 +102,21 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
 
                         <div className="md:col-span-1">
                             <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
-                                <h3 className="text-lg font-bold text-gray-900 mb-4">Spesifikasi</h3>
+                                <h3 className="text-lg font-bold text-gray-900 mb-4">Informasi</h3>
                                 <div className="space-y-4">
                                     <div className="flex justify-between border-b border-gray-200 pb-2">
-                                        <span className="text-gray-500">Luas</span>
-                                        <span className="font-semibold text-gray-900">{property.luas || '-'}</span>
-                                    </div>
-                                    <div className="flex justify-between border-b border-gray-200 pb-2">
-                                        <span className="text-gray-500">Kategori</span>
-                                        <span className="font-semibold text-gray-900">{property.category}</span>
-                                    </div>
-                                    <div className="flex justify-between border-b border-gray-200 pb-2">
-                                        <span className="text-gray-500">Status</span>
-                                        <span className="font-semibold text-gray-900">{property.status}</span>
+                                        <span className="text-gray-500">Layanan</span>
+                                        <span className="font-semibold text-gray-900">Renovasi & Bangun Rumah</span>
                                     </div>
                                 </div>
 
                                 <div className="mt-8">
                                     <Link
-                                        href={`https://wa.me/628815627338?text=Halo, saya tertarik dengan properti: ${property.title}`}
+                                        href={`https://wa.me/628815627338?text=Halo, saya tertarik dengan portofolio renovasi: ${property.title}`}
                                         target="_blank"
                                         className="w-full block text-center bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 transition-colors shadow-lg"
                                     >
-                                        Hubungi Agen via WhatsApp
+                                        Konsultasi via WhatsApp
                                     </Link>
                                 </div>
                             </div>

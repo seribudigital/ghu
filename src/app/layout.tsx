@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Griya Harianto Utama - Properti & Renovasi Terpercaya',
   description: 'Griya Harianto Utama melayani jual beli rumah, tanah kapling, dan jasa renovasi rumah dengan profesional dan terpercaya.',
+  icons: {
+    icon: '/logo.svg',
+  },
 };
 
 export default function RootLayout({

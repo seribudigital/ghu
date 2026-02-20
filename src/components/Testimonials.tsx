@@ -2,27 +2,30 @@ const Testimonials = () => {
     const testimonials = [
         {
             id: 1,
-            name: "Bapak Budi & Keluarga",
-            role: "Pembeli Rumah Type 45",
-            content: "Alhamdulillah, prosesnya sangat mudah dan transparan. Tim Griya Harianto Utama sangat amanah, menjelaskan semua detail legalitas dengan sabar. Sekarang kami sudah menempati rumah impian kami.",
-            initial: "B",
-            color: "bg-blue-100 text-blue-600"
+            name: "Bpk. Ridwan",
+            role: "Cikande",
+            content: "Awalnya ragu mau bangun lantai 2 karena budget terbatas. Alhamdulillah ketemu tim Griya Harianto Utama. DP-nya ringan, sisanya bisa dicicil 3 tahun, dan syaratnya cuma KTP. Hasil kerjanya rapi, pokoknya benar-benar terima beres!",
+            initial: "R",
+            color: "bg-blue-100 text-blue-600",
+            rating: 5
         },
         {
             id: 2,
             name: "Ibu Siti Aminah",
-            role: "Imvestor Tanah Kapling",
-            content: "Investasi tanah di sini sangat menguntungkan. Lokasinya strategis dan perkembangannya cepat. Saya beli tahun lalu, sekarang nilainya sudah naik signifikan. Sangat direkomendasikan!",
+            role: "Serang",
+            content: "Mencari rumah impian yang legalitasnya aman itu susah-susah gampang. Dibantu oleh tim GHU, prosesnya sangat transparan, legalitas terjamin, dan tidak ada biaya yang ditutup-tutupi. Pelayanannya sangat amanah dan kekeluargaan.",
             initial: "S",
-            color: "bg-green-100 text-green-600"
+            color: "bg-green-100 text-green-600",
+            rating: 5
         },
         {
             id: 3,
-            name: "Keluarga Pak Rahmat",
-            role: "Klien Jasa Renovasi",
-            content: "Renovasi rumah tua kami hasilnya luar biasa. Tukangnya rapi, kerjanya cepat, dan biayanya sesuai anggaran. Terima kasih Griya Harianto Utama sudah membuat rumah kami nyaman kembali.",
-            initial: "R",
-            color: "bg-yellow-100 text-yellow-600"
+            name: "Keluarga Bpk. Lukman",
+            role: "Investor",
+            content: "Investasi tanah kapling lewat GHU sangat memuaskan. Lokasinya strategis, prospek ke depannya bagus, dan surat-suratnya langsung diurus dengan cepat. Sangat direkomendasikan untuk yang cari aset masa depan.",
+            initial: "L",
+            color: "bg-yellow-100 text-yellow-600",
+            rating: 5
         }
     ];
 
@@ -30,8 +33,8 @@ const Testimonials = () => {
         <section className="py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                    <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">Kata Mereka</h2>
-                    <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    <h2 className="text-base text-ghu-primary font-semibold tracking-wide uppercase">Kata Mereka</h2>
+                    <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-ghu-dark sm:text-4xl">
                         Kepercayaan Keluarga Indonesia
                     </p>
                 </div>
@@ -44,8 +47,15 @@ const Testimonials = () => {
                                     {testimonial.initial}
                                 </div>
                                 <div className="ml-4">
-                                    <h4 className="text-lg font-bold text-gray-900">{testimonial.name}</h4>
+                                    <h4 className="text-lg font-bold text-ghu-dark">{testimonial.name}</h4>
                                     <p className="text-sm text-gray-500">{testimonial.role}</p>
+                                    <div className="flex text-yellow-400 mt-1">
+                                        {[...Array(testimonial.rating)].map((_, i) => (
+                                            <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                            </svg>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                             <p className="text-gray-600 italic">"{testimonial.content}"</p>
