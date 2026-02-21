@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { client } from '@/sanity/lib/client';
-import { RECENT_PROPERTIES_QUERY } from '@/sanity/lib/queries';
+import { RECENT_RUMAH_QUERY, RECENT_TANAH_QUERY } from '@/sanity/lib/queries';
 import PropertyCard from '@/components/PropertyCard';
 import Testimonials from '@/components/Testimonials';
 import Stats from '@/components/Stats';
@@ -10,7 +10,10 @@ import Image from 'next/image';
 export const revalidate = 60;
 
 export default async function Home() {
-  const recentProperties = await client.fetch(RECENT_PROPERTIES_QUERY);
+  const [recentRumah, recentTanah] = await Promise.all([
+    client.fetch(RECENT_RUMAH_QUERY),
+    client.fetch(RECENT_TANAH_QUERY)
+  ]);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -119,38 +122,75 @@ export default async function Home() {
       {/* Testimonials Section (Social Proof) - Moved UP */}
       <Testimonials />
 
-      {/* Recent Properties Section */}
+      {/* Recent Rumah Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-base text-ghu-primary font-semibold tracking-wide uppercase">Properti Terbaru</h2>
+              <h2 className="text-base text-ghu-primary font-semibold tracking-wide uppercase">Hunian Terbaru</h2>
               <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-ghu-dark sm:text-4xl">
-                Hunian & Tanah Pilihan
+                Rekomendasi Rumah Pilihan
               </p>
             </div>
             <div className="hidden sm:block">
               <Link href="/properti" className="text-ghu-primary font-medium hover:text-ghu-accent flex items-center">
-                Lihat Semua Properti <span className="ml-1">&rarr;</span>
+                Lihat Semua Rumah <span className="ml-1">&rarr;</span>
               </Link>
             </div>
           </div>
 
-          {recentProperties.length > 0 ? (
+          {recentRumah.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {recentProperties.map((property: any) => (
+              {recentRumah.map((property: any) => (
                 <PropertyCard key={property._id} property={property} />
               ))}
             </div>
           ) : (
             <div className="text-center py-20 bg-white rounded-lg border border-gray-100">
-              <p className="text-gray-500 text-lg">Belum ada properti yang ditambahkan.</p>
+              <p className="text-gray-500 text-lg">Belum ada rumah yang ditambahkan.</p>
             </div>
           )}
 
           <div className="mt-8 sm:hidden text-center">
             <Link href="/properti" className="text-ghu-primary font-medium hover:text-ghu-accent">
-              Lihat Semua Properti &rarr;
+              Lihat Semua Rumah &rarr;
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Tanah Kapling Section */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-end mb-12">
+            <div>
+              <h2 className="text-base text-ghu-primary font-semibold tracking-wide uppercase">Peluang Investasi</h2>
+              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-ghu-dark sm:text-4xl">
+                Investasi Tanah Kapling
+              </p>
+            </div>
+            <div className="hidden sm:block">
+              <Link href="/tanah" className="text-ghu-primary font-medium hover:text-ghu-accent flex items-center">
+                Lihat Semua Tanah <span className="ml-1">&rarr;</span>
+              </Link>
+            </div>
+          </div>
+
+          {recentTanah.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {recentTanah.map((property: any) => (
+                <PropertyCard key={property._id} property={property} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-20 bg-white rounded-lg border border-gray-100">
+              <p className="text-gray-500 text-lg">Belum ada tanah kapling yang ditambahkan.</p>
+            </div>
+          )}
+
+          <div className="mt-8 sm:hidden text-center">
+            <Link href="/tanah" className="text-ghu-primary font-medium hover:text-ghu-accent">
+              Lihat Semua Tanah &rarr;
             </Link>
           </div>
         </div>

@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
 import Link from 'next/link';
+import PropertyGallery from '@/components/PropertyGallery';
 
 export const revalidate = 60;
 
@@ -46,13 +47,13 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
     return (
         <div className="bg-white min-h-screen pb-12">
             {/* Hero Image */}
-            <div className="relative h-[50vh] md:h-[60vh] w-full bg-gray-200">
+            <div className="relative w-full h-[50vh] md:h-[65vh] max-h-[700px] bg-[#FAF7F2] flex items-center justify-center overflow-hidden">
                 {displayImage ? (
                     <Image
                         src={urlForImage(displayImage).url()}
                         alt={property.title}
                         fill
-                        className="object-cover"
+                        className="w-full h-full object-contain relative z-10"
                         priority
                     />
                 ) : (
@@ -141,27 +142,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
 
                     {/* Gallery Section */}
                     {property.gallery && property.gallery.length > 0 && (
-                        <div className="mt-12">
-                            <h3 className="text-2xl font-bold text-gray-900 mb-6">Galeri Foto</h3>
-                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                {property.gallery.map((image: any, index: number) => (
-                                    <div key={image._key || index} className="relative aspect-[4/3] w-full overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
-                                        <Image
-                                            src={urlForImage(image).url()}
-                                            alt={image.alt || `Galeri foto ${property.title} ${index + 1}`}
-                                            fill
-                                            className="object-cover hover:scale-105 transition-transform duration-500"
-                                            sizes="(max-width: 768px) 50vw, 33vw"
-                                        />
-                                        {image.caption && (
-                                            <div className="absolute bottom-0 left-0 right-0 bg-black/60 p-2 text-white text-xs backdrop-blur-sm opacity-0 hover:opacity-100 transition-opacity">
-                                                {image.caption}
-                                            </div>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                        <PropertyGallery gallery={property.gallery} title={property.title} />
                     )}
                 </div>
             </div>

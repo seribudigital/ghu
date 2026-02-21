@@ -269,6 +269,9 @@ export default function AdminPanelPage() {
                         {image && (
                             <p className="mt-2 text-sm text-[#D4A853]">File terpilih: {image.name}</p>
                         )}
+                        <p className="text-sm text-gray-500 mt-2 text-center md:text-left">
+                            💡 <span className="font-medium text-ghu-primary">Rekomendasi:</span> Gunakan foto berasio <strong>16:9 (Landscape/Mendatar)</strong> agar gambar tampil proporsional dan tidak terpotong. Maksimal 2MB.
+                        </p>
                     </div>
 
                     {/* Deskripsi */}
@@ -291,6 +294,9 @@ export default function AdminPanelPage() {
                         <label className="block text-sm font-semibold text-gray-700 mb-1">
                             Galeri Foto (Opsional)
                         </label>
+                        <p className="text-sm text-gray-500 mb-3">
+                            💡 <span className="font-medium text-ghu-primary">Rekomendasi:</span> Gunakan foto dengan format <strong>Landscape (Mendatar)</strong> agar deretan galeri tampil rapi dan sejajar. Maksimal 2MB per foto.
+                        </p>
                         <div className="space-y-4">
                             {gallery.map((item, index) => (
                                 <div key={index} className="flex flex-col md:flex-row gap-4 items-start md:items-center bg-gray-50 p-4 border border-gray-200 rounded-lg">
