@@ -40,6 +40,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
+              aria-label={isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
               className="text-ghu-dark hover:text-ghu-primary focus:outline-none focus:text-ghu-primary"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

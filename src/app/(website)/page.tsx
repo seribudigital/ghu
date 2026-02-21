@@ -195,6 +195,7 @@ export default async function Home() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              title="Peta Lokasi Kantor Griya Harianto Utama di Kota Serang"
             ></iframe>
           </div>
           <p className="mt-6 text-gray-600">
