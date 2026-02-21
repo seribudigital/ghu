@@ -7,10 +7,12 @@ export async function POST(request: Request) {
         const title = formData.get('title') as string;
         const slug = formData.get('slug') as string;
         const category = formData.get('category') as string;
-        const price = formData.get('price') as string | undefined;
+
+        const priceValue = formData.get('price');
+        const price = priceValue ? Number(priceValue) : undefined;
+
         const status = formData.get('status') as string | undefined;
         const luas = formData.get('luas') as string | undefined;
-        const kamar = formData.get('kamar') as string | undefined;
         const description = formData.get('description') as string;
         const image = formData.get('image') as File | null;
 
@@ -91,7 +93,6 @@ export async function POST(request: Request) {
             price: price ? price : undefined,
             status: status ? status : undefined,
             luas: luas ? luas : undefined,
-            kamar: kamar ? parseInt(kamar) : undefined,
             description: formattedDescription,
             ...(mainImageRef && { mainImage: mainImageRef }),
             ...(galleryArray.length > 0 && { gallery: galleryArray }),
@@ -103,8 +104,8 @@ export async function POST(request: Request) {
     } catch (error) {
         console.error('Error creating property in Sanity:', error);
         return NextResponse.json(
-            { success: false, error: 'Failed to create property segment.' },
-            { status: 500 }
+            { success: false, error: 'Failed to create property segment.', message: error instanceof Error ? error.message : 'Unknown error' },
+            { status: 400 }
         );
     }
 }

@@ -10,12 +10,12 @@ export default function AdminPanelPage() {
     const [price, setPrice] = useState("");
     const [status, setStatus] = useState("");
     const [luas, setLuas] = useState("");
-    const [kamar, setKamar] = useState("");
     const [description, setDescription] = useState("");
     const [image, setImage] = useState<File | null>(null);
     const [gallery, setGallery] = useState<{ file: File | null, caption: string }[]>([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [message, setMessage] = useState("");
+    const [submitError, setSubmitError] = useState("");
 
     // Auth state
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -34,6 +34,7 @@ export default function AdminPanelPage() {
         e.preventDefault();
         setIsSubmitting(true);
         setMessage("");
+        setSubmitError("");
 
         try {
             const data = new FormData();
@@ -45,7 +46,6 @@ export default function AdminPanelPage() {
                 if (price) data.append("price", price);
                 if (status) data.append("status", status);
                 if (luas) data.append("luas", luas);
-                if (kamar) data.append("kamar", kamar);
             }
 
             data.append("description", description);
@@ -68,6 +68,10 @@ export default function AdminPanelPage() {
 
             const result = await res.json();
 
+            if (!res.ok) {
+                throw new Error(result.message || result.error || "Terjadi kesalahan saat menyimpan data. Cek kembali isian form.");
+            }
+
             if (res.ok && result.success) {
                 setMessage("Data berhasil disimpan!");
                 // Reset form
@@ -77,16 +81,15 @@ export default function AdminPanelPage() {
                 setPrice("");
                 setStatus("");
                 setLuas("");
-                setKamar("");
                 setDescription("");
                 setImage(null);
                 setGallery([]);
             } else {
-                setMessage(result.error || "Gagal menyimpan data.");
+                setSubmitError(result.message || result.error || "Gagal menyimpan data.");
             }
         } catch (error) {
             console.error("Submit error:", error);
-            setMessage("Terjadi kesalahan sistem saat menyimpan data.");
+            setSubmitError(error instanceof Error ? error.message : "Terjadi kesalahan sistem saat menyimpan data.");
         } finally {
             setIsSubmitting(false);
         }
@@ -193,7 +196,7 @@ export default function AdminPanelPage() {
                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4A853] focus:border-transparent outline-none transition bg-white"
                         >
                             <option value="Rumah">Rumah</option>
-                            <option value="Tanah">Tanah</option>
+                            <option value="Tanah Kapling">Tanah Kapling</option>
                             <option value="Renovasi">Renovasi</option>
                         </select>
                     </div>
@@ -206,10 +209,11 @@ export default function AdminPanelPage() {
                                     Harga
                                 </label>
                                 <input
-                                    type="text"
+                                    type="number"
+                                    min="0"
                                     value={price}
                                     onChange={(e) => setPrice(e.target.value)}
-                                    placeholder="Rp 500.000.000"
+                                    placeholder="500000000 (Hanya Angka)"
                                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4A853] focus:border-transparent outline-none transition"
                                 />
                             </div>
@@ -239,19 +243,6 @@ export default function AdminPanelPage() {
                                     value={luas}
                                     onChange={(e) => setLuas(e.target.value)}
                                     placeholder="Misal: 100 m²"
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4A853] focus:border-transparent outline-none transition"
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-1">
-                                    Kamar
-                                </label>
-                                <input
-                                    type="number"
-                                    value={kamar}
-                                    onChange={(e) => setKamar(e.target.value)}
-                                    placeholder="Jumlah Kamar (Jika Ada)"
                                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4A853] focus:border-transparent outline-none transition"
                                 />
                             </div>
@@ -352,9 +343,16 @@ export default function AdminPanelPage() {
                         </div>
                     </div>
 
-                    {/* Message Display */}
-                    {message && (
-                        <div className={`p-4 rounded-lg text-center font-semibold ${message.includes("berhasil") ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+                    {/* Error Message */}
+                    {submitError && (
+                        <div className="bg-red-100 text-red-700 p-3 rounded-lg text-center font-semibold mb-4">
+                            {submitError}
+                        </div>
+                    )}
+
+                    {/* Success Message */}
+                    {message && !submitError && (
+                        <div className="bg-green-100 text-green-700 p-4 rounded-lg text-center font-semibold mb-4">
                             {message}
                         </div>
                     )}
