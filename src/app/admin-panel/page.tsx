@@ -1,8 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 export default function AdminPanelPage() {
+    // Unique suffix for slug generation (per form session)
+    const uniqueSuffix = useRef(Math.random().toString(36).substring(2, 6));
+
     // State management for form data
     const [title, setTitle] = useState("");
     const [slug, setSlug] = useState("");
@@ -84,6 +87,7 @@ export default function AdminPanelPage() {
                 setDescription("");
                 setImage(null);
                 setGallery([]);
+                uniqueSuffix.current = Math.random().toString(36).substring(2, 6);
             } else {
                 setSubmitError(result.message || result.error || "Gagal menyimpan data.");
             }
@@ -162,8 +166,9 @@ export default function AdminPanelPage() {
                                 value={title}
                                 onChange={(e) => {
                                     setTitle(e.target.value);
-                                    const newSlug = e.target.value.toLowerCase().trim().replace(/[\s\W-]+/g, '-');
-                                    setSlug(newSlug);
+                                    const baseSlug = e.target.value.toLowerCase().trim().replace(/[\s\W-]+/g, '-');
+                                    const finalSlug = baseSlug ? `${baseSlug}-${uniqueSuffix.current}` : '';
+                                    setSlug(finalSlug);
                                 }}
                                 placeholder="Masukkan judul properti/renovasi"
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4A853] focus:border-transparent outline-none transition"
